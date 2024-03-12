@@ -5,7 +5,11 @@
     <%= @product.description %>
   </p>
   <%= link_to new_order_path(product_id: @product.id), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
-    Buy Now <%= number_to_currency(@product.price_cents / 100) %>
+    Buy Now <%= number_to_currency(@product.floating_price) %>
+  <% end %>
+
+  <%= link_to new_order_path(product_id: @product.id, gift: true), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
+    Gift Now <%= number_to_currency(@product.floating_price) %>
   <% end %>
 </article>
 <nav class="pb-4">

@@ -6,7 +6,8 @@
 <section class="mt-2 pt-3">
 <h1 class="h2 text-center text-uppercase text-tracked">Check Out</h1>
 <h2 class="h4 mt-4"><%= @order.product.name %></h2>
-<h3 class="h5 font-weight-normal mb-3"><%= number_to_currency(@order.product.price_cents / 100) %></h3>
+<h3 class="h5 font-weight-normal mb-3"><%= number_to_currency(@order.product.floating_price) %></h3>
+
 <%= form_with model: @order, local: true  do |form| %>
   <div class="form-row">
     <div class="form-group col-md-12">
