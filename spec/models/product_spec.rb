@@ -33,4 +33,14 @@ RSpec.describe Product, type: :model do
       expect(product.age_high).to eq(6)
     end
   end
+
+  describe '#floating_price' do
+    subject(:floating_price) { product.floating_price }
+
+    let(:product) { build :product, price_cents: 999 }
+
+    it 'returns the expected price with floating cents' do
+      expect(floating_price).to eq(9.99)
+    end
+  end
 end
