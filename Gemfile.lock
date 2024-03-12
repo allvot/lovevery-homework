@@ -207,6 +207,7 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uri (0.13.0)
+    wannabe_bool (0.7.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -251,6 +252,7 @@ DEPENDENCIES
   sass-rails (~> 6)
   turbolinks (~> 5)
   tzinfo-data
+  wannabe_bool
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.0)
