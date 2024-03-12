@@ -9,6 +9,7 @@ class Product < ApplicationRecord
       "months"
     end
   end
+
   def age_low
     if age_units == "months"
       (age_low_weeks / WEEKS_TO_MONTHS).round
@@ -23,5 +24,9 @@ class Product < ApplicationRecord
     else
       age_high_weeks
     end
+  end
+
+  def floating_price
+    price_cents.to_f / 100
   end
 end
