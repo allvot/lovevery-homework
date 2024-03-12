@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_201540) do
+ActiveRecord::Schema.define(version: 2024_03_12_163509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2019_09_21_201540) do
     t.boolean "paid", null: false, comment: "True if this order has been paid via a successful charge"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "gift", default: false
+    t.string "gift_message"
     t.index ["child_id"], name: "index_orders_on_child_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
