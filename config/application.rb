@@ -10,7 +10,6 @@ module TakeHome
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
 
     # This removes the active_storage and action_mailbox paths from the routes
     # which creates a lot of cruft when doing bin/rails routes
