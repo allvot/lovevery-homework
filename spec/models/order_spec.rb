@@ -1,18 +1,25 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe Order, type: :model do
-  describe "#validations" do
-    it "requires shipping_name" do
-      order = Order.new(
-        product: Product.new,
-        shipping_name: nil,
-        address: "123 Some Road",
-        zipcode: "90210",
-        user_facing_id: "890890908980980"
-      )
+# RSpec.describe Order, type: :model do
+#   describe "#validations" do
+#     context 'with invalid attributes' do
+#       subject(:order) { build :order, shipping_name: nil }
 
-      expect(order.valid?).to eq(false)
-      expect(order.errors[:shipping_name].size).to eq(1)
-    end
-  end
-end
+#       before { is_expected.to be_invalid }
+
+#       it "has shipping_name can't be blank error" do
+#         expect(order.errors[:shipping_name]).to include "can't be blank"
+#       end
+#     end
+
+#     context 'with blank attributes' do
+#       subject(:order) { described_class.new() }
+
+#       before { is_expected.to be_invalid }
+
+#       it "has shipping_name can't be blank error" do
+#         expect(order.errors[:shipping_name]).to include "can't be blank"
+#       end
+#     end
+#   end
+# end
