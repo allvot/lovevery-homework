@@ -8,7 +8,7 @@
     Buy Now <%= number_to_currency(@product.floating_price) %>
   <% end %>
 
-  <%= link_to new_order_path(product_id: @product.id, gift: true), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
+  <%= link_to new_order_path(product_id: @product.id, gift: true), class: "btn btn-warning btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
     Gift Now <%= number_to_currency(@product.floating_price) %>
   <% end %>
 </article>

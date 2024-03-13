@@ -6,14 +6,14 @@ RSpec.describe Order, type: :model do
       subject(:order) { create :order }
 
       it 'has correct attributes' do
-        expect(order).to have_attribute(:product_id)
-        expect(order).to have_attribute(:child_id)
-        expect(order).to have_attribute(:user_facing_id)
-        expect(order).to have_attribute(:address)
-        expect(order).to have_attribute(:zipcode)
-        expect(order).to have_attribute(:paid)
-        expect(order).to have_attribute(:gift)
-        expect(order).to have_attribute(:gift_message)
+        expect(order).to have_attribute(:product_id, :integer)
+        expect(order).to have_attribute(:child_id, :integer)
+        expect(order).to have_attribute(:user_facing_id, :string)
+        expect(order).to have_attribute(:address, :string)
+        expect(order).to have_attribute(:zipcode, :string)
+        expect(order).to have_attribute(:paid, :boolean)
+        expect(order).to have_attribute(:gift, :boolean)
+        expect(order).to have_attribute(:gift_message, :string)
       end
     end
 
