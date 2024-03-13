@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  include Commentable
 
   WEEKS_TO_MONTHS = 4.3
 

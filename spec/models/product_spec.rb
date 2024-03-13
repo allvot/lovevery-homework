@@ -46,4 +46,10 @@ RSpec.describe Product, type: :model do
       expect(floating_price).to eq(9.99)
     end
   end
+
+  describe 'commentable model' do
+    subject(:product) { create :product }
+
+    it_behaves_like "a commentable model"
+  end
 end
