@@ -142,3 +142,8 @@ This implementation of the Form object pattern simplifies the implementation of 
 ### Testing
 
 I also added more specs. I decided to further test the form object's validations and the attributes they should have.
+
+I decided to add an RSpec matcher called "have_attribute" to display how easily you can expand upon RSpec's already robust functionalities. You can find the file at `spec/support/matchers/have_attribute.rb`.
+
+In order to save some code when writting feature tests for the gift purchasing feature, I decided to use contexts and the let function to generate lazy loaded data.
+
