@@ -4,6 +4,14 @@ class Order < ApplicationRecord
 
   validates :shipping_name, presence: true
 
+  # SCOPES
+  # --------------------
+
+  scope :gifts, -> { where(gift: true) }
+
+  # METHODS
+  # --------------------
+
   def to_param
     user_facing_id
   end

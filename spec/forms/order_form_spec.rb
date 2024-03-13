@@ -46,14 +46,16 @@ RSpec.describe OrderForm, type: :model do
         is_expected.to have_attribute(:expiration_year)
         is_expected.to have_attribute(:expiration_month)
         is_expected.to have_attribute(:paid)
+        is_expected.to have_attribute(:gift)
+        is_expected.to have_attribute(:gift_message)
       end
 
       context 'while being a gift' do
         let(:order_params) do
           {
-            parent_full_name: Faker::Name.name,
-            child_full_name: Faker::Name.name,
-            child_birthdate: "2019-03-03",
+            parent_full_name: child.parent_name,
+            child_full_name: child.full_name,
+            child_birthdate: child.birthdate,
             product_id: product.id,
             gift: true,
             credit_card_number: Faker::Finance.credit_card(:visa),
@@ -64,7 +66,7 @@ RSpec.describe OrderForm, type: :model do
         end
 
         let(:child) { create :child }
-        let(:previous_order) { create :order, child: child }
+        let(:previous_order) { create :order, child: child, product: product }
 
         it { is_expected.to be_valid }
 

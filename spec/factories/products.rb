@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    name { Faker::Name.name }
+    name { Faker::Appliance.equipment }
     description { Faker::Lorem.sentence }
     price_cents { SecureRandom.random_number(10000) }
     age_low_weeks { 0 }

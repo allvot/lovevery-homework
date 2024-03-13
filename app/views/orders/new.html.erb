@@ -1,6 +1,6 @@
 <% if @order_form.errors.any? %>
   <aside class="alert alert-danger m-3" role="alert">
-    <%= @order_form.errors.full_messages.join(",") %>
+    <%= @order_form.errors.full_messages.join(", ") %>
   </aside>
 <% end %>
 
@@ -11,7 +11,7 @@
 
 <%= form_with model: @order_form, as: :order, url: orders_path, local: true  do |form| %>
   <div class="form-row">
-    <% if params[:gift].to_b %>
+    <% if @order_form.gift? || @order_form.gift? || params[:gift].to_b %>
       <div class="form-group col-md-12">
         <%= form.label :parent_full_name, "Parent's Name" %>
         <%= form.text_field :parent_full_name, class: "form-control" %>
@@ -36,9 +36,9 @@
   </div>
   <div class="form-row">
     <%= form.hidden_field :product_id %>
-    <%= form.hidden_field :gift %>
+    <%= form.hidden_field :gift, value: @order_form.gift? || params[:gift].to_b %>
 
-    <% if params[:gift].to_b %>
+    <% if @order_form.gift? || params[:gift].to_b %>
       <div class="form-group col-md-4">
         <%= form.label :gift_message %>
         <%= form.text_area :gift_message, class: "form-control", placeholder: "Send a message with your gift" %>

@@ -5,7 +5,7 @@ RSpec.feature "Purchase Product", type: :feature do
     subject(:submit_form) { click_on "Purchase" }
 
     let!(:product) { create :product }
-
+    let(:last_order) { Order.last }
 
     before do
       visit root_path
@@ -38,7 +38,7 @@ RSpec.feature "Purchase Product", type: :feature do
                               .and change(Child, :count ).by(1)
 
         expect(page).to have_content("Thanks for Your Order")
-        expect(page).to have_content(Order.last.user_facing_id)
+        expect(page).to have_content(last_order.user_facing_id)
         expect(page).to have_content("Kim Jones")
       end
     end
@@ -48,13 +48,19 @@ RSpec.feature "Purchase Product", type: :feature do
 
       context 'when child & order exists' do
         let!(:child) { create :child, full_name: "Kim Jones", parent_name: "Pat Jones", birthdate: "2019-03-03" }
-        let!(:prev_order) { create :order, child: child }
+        let!(:prev_order) { create :order, child: child, product: product }
+
+        before do
+          fill_in "order_form[parent_full_name]", with: "Pat Jones"
+          fill_in "order_form[gift_message]", with: "This is a short and sweet msg"
+        end
 
         scenario "Creates an order and charges us" do
-          expect { submit_form }.to change(Order, :count).by(1)
+          expect { submit_form }.to change{ Order.gifts.count }.by(1)
 
           expect(page).to have_content("Thanks for Your Order")
-          expect(page).to have_content(Order.last.user_facing_id)
+          expect(page).to have_content("This is a short and sweet msg")
+          expect(page).to have_content(last_order.user_facing_id)
           expect(page).to have_content("Kim Jones")
         end
       end

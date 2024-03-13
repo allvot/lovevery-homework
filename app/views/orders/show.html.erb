@@ -11,6 +11,14 @@
         <%= @order.product.name %>
         for
         <strong><%= @order.child.full_name %></strong>
+
+        <% if @order.gift? && @order.gift_message.present? %>
+          <p>
+            <strong>Your message:</strong>
+            <%= @order.gift_message %>
+          </p>
+        <% end %>
+
       </h3>
       <p class="card-text">
         <% if @order.paid? %>
