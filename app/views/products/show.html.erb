@@ -12,6 +12,9 @@
     Gift Now <%= number_to_currency(@product.floating_price) %>
   <% end %>
 </article>
+
+<%= render partial: 'shared/commentable', locals: { comments: @product.comments } %>
+
 <nav class="pb-4">
   <%= link_to products_path, class: "text-normal font-weight-bolder" do %>
     &larr; Back to Products
