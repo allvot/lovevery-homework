@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to polymorphic_path(@comment.commentable)
     else
-      redirect_to :back
+      redirect_to polymorphic_path(@comment.commentable), alert: @comment.errors.full_messages.join(", ")
     end
   end
 

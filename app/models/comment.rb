@@ -3,4 +3,9 @@ class Comment < ApplicationRecord
   # -----------------
 
   belongs_to :commentable, polymorphic: true
+
+  # VALIDATIONS
+  # -----------------
+
+  validates :content, presence: true
 end
