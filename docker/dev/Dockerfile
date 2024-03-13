@@ -12,13 +12,6 @@ RUN apt-get update \
     && apt-get update && apt-get install -y yarn \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install mc
-RUN curl -L https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc && \
-    chmod +x /usr/local/bin/mc
-
-# Run mc command to verify installation (optional)
-RUN mc --version
-
 # Set the working directory inside the container
 WORKDIR /app
 
