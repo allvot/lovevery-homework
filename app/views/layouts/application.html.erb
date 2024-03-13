@@ -16,6 +16,14 @@
       </div>
     </header>
     <main class="container pt-1">
+      <% if flash.present? %>
+      <div class="alert alert-warning">
+        <% flash.each do |type, msg| %>
+          <%= msg %>
+        <% end %>
+      </div>
+      <% end %>
+
       <%= yield %>
     </main>
     <footer class="mt-2 pt-2 border-top">

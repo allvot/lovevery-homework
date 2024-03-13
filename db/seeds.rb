@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
+
+require 'factory_bot_rails'
+
 product = Product.find_or_create_by!(
   name: "The Looker Play Kit",
   description: "Includes a silicone rattle with removable ball, standing card holder, and simple black and white card set",
@@ -13,14 +16,20 @@ product = Product.find_or_create_by!(
   age_low_weeks: 0,
   age_high_weeks: 12,
 )
-Product.find_or_create_by!(
+
+FactoryBot.create_list :comment, 3, commentable: product
+
+product1 = Product.find_or_create_by!(
   name: "The Charmer Play Kit",
   description: "Includes a wooden rattle, rolling bell, soft book, and mirror card",
   price_cents: 4000,
   age_low_weeks: 13,
   age_high_weeks: 17
 )
-Product.find_or_create_by!(
+
+FactoryBot.create_list :comment, 3, commentable: product1
+
+product2 = Product.find_or_create_by!(
   name: "The Senser Play Kit",
   description: "Includes a magic tissue box, magic tissues, montessori ball, and play socks",
   price_cents: 3200,
@@ -28,7 +37,9 @@ Product.find_or_create_by!(
   age_high_weeks: 26
 )
 
-Order.find_or_create_by!(
+FactoryBot.create_list :comment, 3, commentable: product2
+
+order = Order.find_or_create_by!(
   product_id: product.id,
   shipping_name: "Chris Smith",
   address: "123 Some Road",

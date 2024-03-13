@@ -13,8 +13,13 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+  config.include ActionView::Helpers::NumberHelper
+  config.include Rails.application.routes.url_helpers
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!

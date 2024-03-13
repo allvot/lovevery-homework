@@ -9,7 +9,7 @@
         </small>
         </h2>
         <p class="card-text">
-          <%= number_to_currency(product.price_cents / 100) %>
+          <%= number_to_currency(product.floating_price) %>
           <div>
             <%= link_to "More Details…", product, class: "card-link btn btn-lg btn-success text-uppercase font-weight-bolder text-tracked f-small" %>
           </div>

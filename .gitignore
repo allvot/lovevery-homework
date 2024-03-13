@@ -39,4 +39,5 @@ yarn-debug.log*
 
 # OSX image preview files
 .DS_Store
-
+.env
+!.env.*
